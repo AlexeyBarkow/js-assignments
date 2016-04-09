@@ -335,7 +335,6 @@ function getCardId(value) {
         '♠' : 3
     };
     return cardSuitOrder[value[value.length - 1]] * 13 + getValueOrder(value.slice(0, -1));
-
 }
 
 
