@@ -82,7 +82,7 @@ describe('09-functions-n-closures-tasks', function() {
             if (attemps++<maxAttemps) throw new Error();
             return expected;
         }
-
+// console.log(tasks.retry);
         var actual = tasks.retry(fn, maxAttemps)();
         assert.equal(actual, expected);
     });

@@ -34,7 +34,57 @@
  *
  */
 function parseBankAccount(bankAccount) {
-    throw new Error('Not implemented');
+    // throw new Error('Not implemented');
+    function getNumberFromBankString (str) {
+        switch (str) {
+            case ' _ ' +
+                 '| |' +
+                 '|_|':
+                return 0;
+            case '   ' +
+                 '  |' +
+                 '  |':
+                return 1;
+            case ' _ ' +
+                 ' _|' +
+                 '|_ ':
+                return 2;
+            case ' _ ' +
+                 ' _|' +
+                 ' _|':
+                return 3;
+            case '   ' +
+                 '|_|' +
+                 '  |':
+                return 4;
+            case ' _ ' +
+                 '|_ ' +
+                 ' _|':
+                return 5;
+            case ' _ ' +
+                 '|_ ' +
+                 '|_|':
+                return 6;
+            case ' _ ' +
+                 '  |' +
+                 '  |':
+                return 7;
+            case ' _ ' +
+                 '|_|' +
+                 '|_|':
+                return 8;
+            case ' _ ' +
+                 '|_|' +
+                 ' _|':
+                return 9;
+        }
+    }
+    var splitted = bankAccount.split('\n'), res = 0, curr;
+    for (var i = 0; i < splitted[0].length; i += 3) {
+        curr = splitted[0].slice(i, i + 3) + splitted[1].slice(i, i + 3) + splitted[2].slice(i, i + 3);
+        res = res * 10 + getNumberFromBankString(curr);
+    }
+    return res;
 }
 
 
@@ -63,7 +113,19 @@ function parseBankAccount(bankAccount) {
  *                                                                                                'characters.'
  */
 function* wrapText(text, columns) {
-    throw new Error('Not implemented');
+    // throw new Error('Not implemented');
+    var words = text.split(' '), curr = '';
+    for (var i = 0; i < words.length; i++) {
+        if (curr.length + words[i].length <= columns) {
+            curr += words[i] + " ";
+        } else {
+            yield curr.trim();
+            curr = words[i] + " ";
+        }
+    }
+    if (curr != '') {
+        yield curr.trim();
+    }
 }
 
 
@@ -136,6 +198,7 @@ function getPokerHandRank(hand) {
  */
 function* getFigureRectangles(figure) {
    throw new Error('Not implemented');
+   
 }
 
 
